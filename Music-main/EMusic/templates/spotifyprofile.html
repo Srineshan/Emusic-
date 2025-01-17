@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Profile</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f4f4f4;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #1DB954; /* Spotify green */
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin: 15px 0;
+            color: #555;
+        }
+
+        p strong {
+            font-weight: bold;
+            color: #333;
+        }
+
+        a {
+            text-decoration: none;
+            color: #1DB954;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #1ED760; /* Lighter green on hover */
+        }
+
+        .card {
+            background-color: #f9fafb;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card h2 {
+            color: #333;
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 1rem;
+            color: #777;
+        }
+
+        .button {
+            background-color: #1DB954;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            font-size: 1.2rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #1ED760;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Spotify Profile</h1>
+        
+        <div class="card">
+            <h2>{{ user_data.display_name }}</h2>
+            <p><strong>Email:</strong> {{ user_data.email }}</p>
+            <p><strong>Country:</strong> {{ user_data.country }}</p>
+            <p><strong>Followers:</strong> {{ user_data.followers.total }}</p>
+            <p><strong>Spotify URL:</strong> 
+                <a href="{{ user_data.external_urls.spotify }}" target="_blank">Visit</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

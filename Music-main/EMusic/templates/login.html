@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Music - Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://i.pinimg.com/originals/e8/13/b2/e813b2946bcb3e0e9dab01bf2fd5f9e4.jpg'); /* Add your background image URL */
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Login Form Section */
+        .login-container {
+            width: 100%;
+            max-width: 500px;
+            background-color: rgba(255, 255, 255, 0.9); /* White background with opacity */
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .login-form h2 {
+            font-size: 36px;
+            color: #6a1b9a;
+            margin-bottom: 25px;
+        }
+
+        .form-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .form-row label {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+            width: 40%;
+            margin-right: 15px;
+        }
+
+        .form-row input {
+            width: 55%;
+            padding: 14px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-row input:focus {
+            outline: none;
+            border-color: #6a1b9a;
+            box-shadow: 0 0 8px rgba(106, 27, 154, 0.3);
+        }
+
+        .login-form button {
+            background-color: #6a1b9a;
+            color: white;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 16px;
+            text-transform: uppercase;
+            cursor: pointer;
+            width: 100%;
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .login-form button:hover {
+            background-color: #4a148c;
+        }
+
+        .login-form p {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .login-form a {
+            color: #6a1b9a;
+            font-weight: bold;
+        }
+
+        .login-form a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Form Section -->
+    <div class="login-container">
+        <form method="POST" class="login-form">
+            {% csrf_token %}
+            <h2>Login to Your Account</h2>
+
+            <!-- Username Field -->
+            <div class="form-row">
+                <label for="id_username">Username:</label>
+                <input type="text" id="id_username" name="username" placeholder="Enter Username" value="{{ form.username.value|default:'' }}">
+            </div>
+
+            <!-- Password Field -->
+            <div class="form-row">
+                <label for="id_password">Password:</label>
+                <input type="password" id="id_password" name="password" placeholder="Enter Password">
+            </div>
+
+            <button type="submit">Login</button>
+            <p>Don't have an account? <a href="/signup">Sign up here</a></p>
+        </form>
+    </div>
+</body>
+</html>

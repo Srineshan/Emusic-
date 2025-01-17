@@ -1,0 +1,183 @@
+{% extends 'base.html' %}
+
+{% block title %}Help Center{% endblock %}
+
+{% block content %}
+    <div class="help-center-container">
+        <h2>Welcome to the Help Center</h2>
+
+        <div class="faq-section">
+            <h3>Frequently Asked Questions</h3>
+
+            <!-- FAQ 1: How do I create an account? -->
+            <div class="faq-item">
+                <button class="accordion">
+                    <strong>How do I create an account?</strong>
+                </button>
+                <div class="panel">
+                    <p>To create an account, click on the "Sign Up" button on the home page. Provide your email address, choose a password, and complete the registration process.</p>
+                </div>
+            </div>
+
+            <!-- FAQ 2: How do I change my account password? -->
+            <div class="faq-item">
+                <button class="accordion">
+                    <strong>How do I change my account password?</strong>
+                </button>
+                <div class="panel">
+                    <p>To change your password, go to the "Settings" page from your profile, select the "Change Password" option, and follow the prompts to update your password.</p>
+                </div>
+            </div>
+
+            <!-- FAQ 3: What are the differences between subscription tiers? -->
+            <div class="faq-item">
+                <button class="accordion">
+                    <strong>What are the differences between subscription tiers (e.g., Free, Premium, Family)?</strong>
+                </button>
+                <div class="panel">
+                    <p>The Free plan allows basic features, with ads and limited skips. The Premium plan offers an ad-free experience, unlimited skips, and offline downloads. The Family plan allows sharing with up to 6 members.</p>
+                </div>
+            </div>
+
+            <!-- FAQ 4: How do I search for music? -->
+            <div class="faq-item">
+                <button class="accordion">
+                    <strong>How do I search for music?</strong>
+                </button>
+                <div class="panel">
+                    <p>To search for music, simply use the search bar at the top of the app. You can search for songs, artists, albums, or playlists.</p>
+                </div>
+            </div>
+
+            <!-- FAQ 5: How do I download songs for offline listening? -->
+            <div class="faq-item">
+                <button class="accordion">
+                    <strong>How do I download songs for offline listening?</strong>
+                </button>
+                <div class="panel">
+                    <p>To download songs, go to the song or playlist you want to save, and click the download icon next to it. You can access your downloaded content from the "Library" tab.</p>
+                </div>
+            </div>
+
+            <!-- FAQ 6: How do I connect my app to Bluetooth or external speakers? -->
+            <div class="faq-item">
+                <button class="accordion">
+                    <strong>How do I connect my app to Bluetooth or external speakers?</strong>
+                </button>
+                <div class="panel">
+                    <p>Ensure your Bluetooth speaker or device is turned on and in pairing mode. Then, go to the app's settings and select "Bluetooth" to connect your device. You can also use AirPlay for supported devices.</p>
+                </div>
+            </div>
+
+            <!-- FAQ 7: Can I use the app on multiple devices with the same account? -->
+            <div class="faq-item">
+                <button class="accordion">
+                    <strong>Can I use the app on multiple devices with the same account?</strong>
+                </button>
+                <div class="panel">
+                    <p>Yes, you can log in to the same account on multiple devices. Your playlists, preferences, and downloads will sync across all devices.</p>
+                </div>
+            </div>
+
+            <!-- FAQ 8: How do I delete my account or request data removal? -->
+            <div class="faq-item">
+                <button class="accordion">
+                    <strong>How do I delete my account or request data removal?</strong>
+                </button>
+                <div class="panel">
+                    <p>To delete your account, go to the "Settings" page, select "Account," and click on the "Delete Account" option. If you would like to request data removal, please contact our support team.</p>
+                </div>
+            </div>
+
+            
+
+        </div>
+    </div>
+
+    <style>
+        .help-center-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            font-size: 32px;
+            color: #6a1b9a;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .faq-section {
+            margin-top: 20px;
+        }
+
+        .faq-section h3 {
+            font-size: 28px;
+            color: #6a1b9a;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .faq-item {
+            margin-bottom: 15px;
+        }
+
+        .accordion {
+            background-color: #f2f2f2;
+            color: #333;
+            cursor: pointer;
+            padding: 16px;
+            width: 100%;
+            text-align: left;
+            border: none;
+            outline: none;
+            font-size: 18px;
+            transition: 0.4s;
+            border-radius: 8px;
+            margin-bottom: 8px;
+        }
+
+        .accordion:hover {
+            background-color: #e0e0e0;
+        }
+
+        .accordion:focus {
+            background-color: #9c4dcc;
+            color: white;
+        }
+
+        .panel {
+            background-color: #f9f9f9;
+            padding: 0 18px;
+            display: none;
+            overflow: hidden;
+            font-size: 16px;
+            color: #555;
+            border-left: 3px solid #6a1b9a;
+        }
+
+        
+    </style>
+
+    <script>
+        // Accordion functionality
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.display === "block") {
+                    panel.style.display = "none";
+                } else {
+                    panel.style.display = "block";
+                }
+            });
+        }
+    </script>
+{% endblock %}

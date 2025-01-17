@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+
+{% block title %}Welcome to E-Music{% endblock %}
+
+{% block content %}
+    <div class="hero-container">
+        <div class="hero-content">
+            <h1>Welcome to E-Music</h1>
+            <p>Your ultimate destination to discover new sounds, create personalized playlists, and immerse yourself in the world of music!</p>
+        </div>
+        <div class="hero-description">
+            <h2>Where Every Note Tells a Story</h2>
+            <p>Step into a Symphony of Sound<br>
+            Enter a realm where music transcends mere notes—where each chord, each rhythm, and every melody tells a story of emotion, journey, and wonder. Music here isn’t just heard; it’s felt deeply within the heart, stirring memories and emotions in a way that only sound can. Whether you’re lost in the melancholic beauty of a slow ballad or swept away by the electrifying beats of a high-energy anthem, each experience invites you to connect with the pure essence of life itself. Let the music carry you to places you've never been, and echo in your soul long after the last note fades.</p>
+        </div>
+        <!-- Button to simulate interaction -->
+        <div class="cta-container">
+            <button class="cta-btn">Start Your Musical Journey</button>
+        </div>
+    </div>
+
+    <style>
+        /* Main Container */
+        .hero-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 50px;
+            background-color: #f3e5f5;  /* Light purple background */
+            border-radius: 20px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            animation: fadeIn 1s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Hero Content */
+        .hero-content {
+            text-align: center;
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeUp 2s ease-out forwards;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            color: #6a1b9a;  /* Purple color */
+            margin: 0;
+            font-weight: 600;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            color: #444;
+            margin-top: 15px;
+        }
+
+        /* Hero Description */
+        .hero-description h2 {
+            font-size: 36px;
+            color: #6a1b9a;  /* Purple color */
+            margin-bottom: 20px;
+            text-align: center;
+            animation: slideIn 1s ease-out;
+        }
+
+        .hero-description p {
+            font-size: 18px;
+            color: #555;
+            line-height: 1.6;
+            text-align: center;
+            margin-top: 20px;
+            max-width: 800px;
+            opacity: 0;
+            animation: fadeIn 2s ease-out 1s forwards;
+        }
+
+        /* Call to Action Button */
+        .cta-container {
+            margin-top: 40px;
+            animation: fadeIn 2s ease-out 2s forwards;
+        }
+
+        .cta-btn {
+            background-color: #8e24aa;  /* Slightly darker purple */
+            color: white;
+            padding: 15px 30px;
+            font-size: 20px;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Hover Effect for CTA Button */
+        .cta-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Keyframe Animations */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes fadeUp {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideIn {
+            0% { opacity: 0; transform: translateX(-100px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+    </style>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="notifications-container">
+        <h2>Notifications</h2>
+
+        {% if notifications %}
+            <ul class="notification-list">
+                {% for notification in notifications %}
+                    <li class="notification-item {% if notification.read %}read{% else %}unread{% endif %}">
+                        <p>{{ notification.message }}</p>
+                        <small>Received on: {{ notification.created_at }}</small>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No notifications yet!</p>
+        {% endif %}
+    </div>
+    <script>
+        function markAsRead(notificationId) {
+            fetch(`/mark-notification-as-read/${notificationId}/`, {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    // Update the notification UI to mark as read
+                    document.getElementById(`notification-${notificationId}`).classList.add('read');
+                }
+            });
+        }
+    </script>
+    
+    <style>
+        .notification-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .notification-item {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .notification-item.read {
+            background-color: #e0e0e0;
+        }
+        .notification-item.unread {
+            background-color: #fff3cd;
+        }
+    </style>
+{% endblock %}

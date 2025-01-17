@@ -1,0 +1,210 @@
+{% extends 'base.html' %}
+
+{% block title %}Search{% endblock %}
+
+{% block content %}
+<div class="content">
+    <h2 class="page-title">Search Results for "{{ query }}"</h2>
+
+    {% if search_results %}
+        <div id="results">
+            <ul>
+                {% for track in search_results %}
+                    <li class="result-item">
+                        <a href="https://open.spotify.com/track/{{ track.id }}" target="_blank" class="result-link">
+                            <div class="result-content">
+                                {% if track.album.images %}
+                                    <img src="{{ track.album.images.0.url }}" alt="Album Cover" class="album-cover">
+                                {% endif %}
+                                <div class="track-info">
+                                    <span class="track-name">{{ track.name }}</span> 
+                                    - <span class="artist-name">{{ track.artists.0.name }}</span>
+                                    <div class="track-details">
+                                        <span class="popularity">Popularity: {{ track.popularity }}%</span> 
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% else %}
+        <p>No results found for "{{ query }}".</p>
+    {% endif %}
+</div>
+
+<style>
+    
+
+    /* Page Title */
+    .page-title {
+        font-size: 3rem; /* Increased font size */
+        font-weight: bold;
+        color: #6a1b9a;
+        text-align: center;
+        margin-bottom: 40px; /* Increased space */
+        text-transform: uppercase;
+    }
+
+    /* Main Content Area */
+    .content {
+        padding: 60px 30px; /* Increased padding */
+        background-color: white;
+        margin: 40px 0; /* Increased margin */
+        color: #333;
+        text-align: center;
+        border-radius: 8px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Enhanced shadow */
+    }
+
+    /* Results Section */
+    #results {
+        margin-top: 30px;
+        text-align: left;
+        max-width: 1000px; /* Increased width */
+        margin: 30px auto;
+    }
+
+    #results ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .result-item {
+        margin: 30px 0; /* Increased spacing between items */
+        padding: 25px; /* Increased padding */
+        border-radius: 12px;
+        background-color: #fff;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Stronger shadow */
+        display: flex;
+        align-items: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+    }
+
+    .result-item:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Enhanced hover effect */
+    }
+
+    .result-content {
+        display: flex;
+        align-items: center;
+        width: 100%;
+    }
+
+    .album-cover {
+        width: 80px; /* Increased size */
+        height: 80px; /* Increased size */
+        border-radius: 10px;
+        margin-right: 30px; /* Increased space */
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    .album-cover:hover {
+        transform: scale(1.1);
+    }
+
+    .track-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .track-name {
+        font-weight: bold;
+        font-size: 22px; /* Increased font size */
+        color: #6a1b9a;
+        transition: color 0.3s ease;
+    }
+
+    .track-name:hover {
+        color: #4CAF50;
+    }
+
+    .artist-name {
+        font-size: 16px; /* Increased font size */
+        color: #777;
+        transition: color 0.3s ease;
+    }
+
+    .artist-name:hover {
+        color: #333;
+    }
+
+    .track-details {
+        font-size: 14px; /* Increased font size */
+        color: #555;
+        margin-top: 10px; /* Increased margin */
+    }
+
+    .popularity {
+        font-weight: bold;
+        color: #ff9800;
+    }
+
+    .duration {
+        font-weight: bold;
+        color: #00796b;
+    }
+
+   
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+        .result-item {
+            padding: 18px; /* Adjusted padding */
+        }
+
+        .album-cover {
+            width: 70px; /* Slightly larger for smaller screens */
+            height: 70px; /* Slightly larger for smaller screens */
+        }
+
+        .track-info {
+            text-align: left;
+        }
+
+        .track-name {
+            font-size: 20px; /* Adjusted font size */
+        }
+
+        .artist-name {
+            font-size: 15px; /* Adjusted font size */
+        }
+    }
+
+    @media (max-width: 600px) {
+        .content {
+            padding: 30px 20px; /* Adjusted padding */
+        }
+
+        .result-item {
+            flex-direction: column;
+            padding: 20px; /* Adjusted padding */
+        }
+
+        .album-cover {
+            width: 70px; /* Adjusted size */
+            height: 70px; /* Adjusted size */
+            margin-bottom: 15px; /* Adjusted margin */
+        }
+
+        .track-name {
+            font-size: 18px; /* Adjusted font size */
+        }
+
+        .artist-name {
+            font-size: 14px; /* Adjusted font size */
+        }
+
+        footer p {
+            font-size: 14px; /* Adjusted footer font size */
+        }
+    }
+</style>
+
+{% endblock %}
