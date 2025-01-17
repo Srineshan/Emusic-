@@ -1,0 +1,253 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="settings-container">
+        <div class="settings-header">
+            <h2>Update Your Profile</h2>
+        </div>
+
+        <div class="tabs">
+            <button class="tab-button active" id="updateProfileTab" onclick="showTab('update-profile')">Update Profile</button>
+            <button class="tab-button" id="changePasswordTab" onclick="showTab('change-password')">Change Password</button>
+        </div>
+
+        <div class="settings-body">
+            <!-- Left Column: Update Profile -->
+            <div class="tab-content update-profile" id="update-profile">
+                <form method="POST" enctype="multipart/form-data" class="settings-form">
+                    {% csrf_token %}
+                    <h3>Update Profile Information</h3>
+                    <div class="form-group">
+                        {{ profile_form.as_p }}
+                    </div>
+                    <button type="submit" name="update_profile" class="btn update-btn">Update Profile</button>
+                </form>
+            </div>
+
+            <!-- Right Column: Change Password -->
+            <div class="tab-content change-password" id="change-password" style="display: none;">
+                <form method="POST" class="settings-form">
+                    {% csrf_token %}
+                    <h3>Change Password</h3>
+                    <div class="form-group">
+                        {{ password_form.as_p }}
+                    </div>
+                    <button type="submit" name="change_password" class="btn change-password-btn">Change Password</button>
+                </form>
+            </div>
+        </div>
+
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <div class="message-item">
+                        <p>{{ message }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+
+    <style>
+        .settings-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.1);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .settings-header {
+            text-align: center;
+            font-size: 36px;
+            color: #6a1b9a;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .tab-button {
+            padding: 12px 30px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #6a1b9a;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin: 0 10px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .tab-button:hover {
+            background-color: #9c4dcc;
+            transform: translateY(-4px);
+        }
+
+        .tab-button.active {
+            background-color: #9c4dcc;
+        }
+
+        .settings-body {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            margin-top: 20px;
+        }
+
+        .tab-content {
+            width: 100%;
+        }
+
+        .settings-form {
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            color: #6a1b9a;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            border-color: #6a1b9a;
+            outline: none;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 14px;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            text-align: center;
+        }
+
+        .update-btn {
+            background-color: #6a1b9a;
+            border: none;
+        }
+
+        .update-btn:hover {
+            background-color: #9c4dcc;
+            transform: translateY(-4px);
+        }
+
+        .change-password-btn {
+            background-color: #ff5733;
+            border: none;
+            margin-top: 20px;
+        }
+
+        .change-password-btn:hover {
+            background-color: #ff704d;
+            transform: translateY(-4px);
+        }
+
+        .messages {
+            margin-top: 30px;
+        }
+
+        .message-item {
+            background-color: #f1f1f1;
+            color: #333;
+            padding: 15px;
+            border-left: 5px solid #6a1b9a;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+
+        .message-item p {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        /* Hover Effects for Form Fields */
+        .form-group input:hover, .form-group textarea:hover, .form-group select:hover {
+            border-color: #6a1b9a;
+        }
+
+        .settings-form h3 {
+            color: #6a1b9a;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .settings-container {
+                padding: 20px;
+            }
+
+            .settings-header {
+                font-size: 28px;
+            }
+
+            .settings-body {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .btn {
+                font-size: 16px;
+            }
+
+            .form-group input, .form-group textarea, .form-group select {
+                font-size: 14px;
+            }
+        }
+    </style>
+
+    <script>
+        // JavaScript to toggle between "Update Profile" and "Change Password" sections
+        function showTab(tabName) {
+            // Hide all tabs
+            const allTabs = document.querySelectorAll('.tab-content');
+            allTabs.forEach(function(tab) {
+                tab.style.display = 'none';
+            });
+
+            // Remove active class from all tab buttons
+            const allTabButtons = document.querySelectorAll('.tab-button');
+            allTabButtons.forEach(function(button) {
+                button.classList.remove('active');
+            });
+
+            // Show the selected tab and add 'active' class to the clicked tab button
+            const selectedTab = document.getElementById(tabName);
+            const selectedTabButton = document.getElementById(tabName + 'Tab');
+            selectedTab.style.display = 'block';
+            selectedTabButton.classList.add('active');
+        }
+
+        // Show Update Profile by default
+        window.onload = function() {
+            showTab('update-profile');
+        };
+    </script>
+{% endblock %}

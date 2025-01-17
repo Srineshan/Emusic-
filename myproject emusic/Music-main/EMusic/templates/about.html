@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Music - About Us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #8e24aa, #6a1b9a, #ff4081);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Navigation Bar Styles */
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: white;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .navbar-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .navbar-links li {
+            margin: 0 20px;
+        }
+
+        .navbar-links a {
+            color: white;
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-links a:hover {
+            color: #ff4081;
+        }
+
+        /* About Us Section Styles */
+        .about-us {
+            padding: 100px 20px;
+            text-align: center;
+            color: white;
+            position: relative;
+            z-index: 2;
+            background: rgba(0, 0, 0, 0.4); /* Semi-transparent overlay */
+        }
+
+        .about-us h2 {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .about-us p {
+            font-size: 18px;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #f1f1f1;
+        }
+
+        .about-us p span {
+            font-weight: bold;
+            color: #ff4081;
+        }
+
+        .about-us h3 {
+            font-size: 30px;
+            margin-top: 50px;
+            color: #ff4081;
+        }
+
+        /* Genre List Section Styles */
+        .genres {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 40px 20px;
+            margin-top: 50px;
+            z-index: 1;
+        }
+
+        .genre-item {
+            width: 200px;
+            text-align: center;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            background-color: rgba(240, 229, 245, 0.8);
+            cursor: pointer;
+        }
+
+        /* Hover effect with purple glow */
+        .genre-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 20px rgba(106, 27, 154, 0.6);
+        }
+
+        .genre-item img {
+            width: 100%;
+            height: auto;
+            border-bottom: 4px solid #6a1b9a;
+        }
+
+        .genre-item h4 {
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            background-color: #6a1b9a;
+            color: white;
+            padding: 10px;
+            text-transform: uppercase;
+            border-radius: 0 0 10px 10px;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 16px;
+        }
+
+        /* Animated circles background */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0) 80%);
+            pointer-events: none;
+            animation: moveParticles 5s infinite linear;
+        }
+
+        @keyframes moveParticles {
+            0% { transform: translateX(0) translateY(0); }
+            100% { transform: translateX(100px) translateY(100px); }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Animated Circles Background -->
+    <div class="particles"></div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="/" class="logo">E-Music</a>
+            <ul class="navbar-links">
+                <li><a href="/about-us">About Us</a></li>
+                <li><a href="/subscription">Subscription Pack</a></li>
+                <li><a href="/helpcentre1">Help Centre</a></li>
+                <li><a href="/signup">Sign Up</a></li>
+                <li><a href="/login">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- About Us Section -->
+    <section id="about-us" class="about-us">
+        <h2>About Us</h2>
+        <p>E-Music is the platform to discover songs, save your favorite tracks, and transform them into retro CDs and tapes, all enhanced by AI-powered soundspaces. Whether you're a long-time music lover or new to the world of sound, E-Music has something for everyone. Our mission is to create a personalized, immersive experience that brings the past and future of music together. Our platform uses cutting-edge technology to create playlists that match your tastes, introduce you to new genres, and provide a soundtrack for every moment.</p>
+        <h3>Discover Your Music Genres</h3>
+    </section>
+
+    <!-- Genre List Section -->
+    <div class="genres">
+        <div class="genre-item">
+            <img src="https://img.freepik.com/free-photo/young-man-playing-guitar-music-local-event_23-2149188121.jpg?ga=GA1.1.1259493159.1731855993&semt=ais_hybrid" alt="Rock Genre">
+            <h4>Rock</h4>
+        </div>
+        <div class="genre-item">
+            <img src="https://img.freepik.com/premium-photo/man-cosplay-costume-cow-with-reel-tape-recorder-guy-animal-pyjamas-sleepwear-funny-photo-with-party-ideas-disco-retro-music_370059-2803.jpg?ga=GA1.1.1259493159.1731855993&semt=ais_hybrid" alt="Pop Genre">
+            <h4>Pop</h4>
+        </div>
+        <div class="genre-item">
+            <img src="https://img.freepik.com/free-photo/african-american-jazz-musician-playing-saxophone_155003-36850.jpg?ga=GA1.1.1259493159.1731855993&semt=ais_hybrid" alt="Jazz Genre">
+            <h4>Jazz</h4>
+        </div>
+        <div class="genre-item">
+            <img src="https://img.freepik.com/premium-photo/young-pretty-afro-woman-feeling-shocked-amazed-surprised-showing-approval-making-okay-sign-with-both-hands-graffiti-wall_1194-28458.jpg?ga=GA1.1.1259493159.1731855993&semt=ais_hybrid" alt="Hip Hop Genre">
+            <h4>Hip Hop</h4>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2024 E-Music. All rights reserved.
+    </footer>
+
+</body>
+</html>
